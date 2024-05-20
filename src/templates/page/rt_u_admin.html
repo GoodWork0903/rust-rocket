@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Rag Tag</title>
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="/static/css/simplebar.css" />
+    <!-- Fonts CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="/static/css/feather.css" />
+    <link rel="stylesheet" href="/static/css/dataTables.bootstrap4.css" />
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="/static/css/daterangepicker.css" />
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/static/css/app-light.css" id="lightTheme" />
+    <link
+      rel="stylesheet"
+      href="/static/css/app-dark.css"
+      id="darkTheme"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.planetaudio.si/assets/global/plugins/bootstrap-toastr/toastr.min.css"
+    />
+  </head>
+  <body class="vertical light">
+    <div class="wrapper">  
+      <nav class="topnav navbar navbar-light">
+        <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+          <i class="fe fe-menu navbar-toggler-icon"></i>
+        </button>
+        <form class="form-inline mr-auto searchform text-muted">
+          <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
+        </form>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
+              <i class="fe fe-sun fe-16"></i>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
+              <span class="fe fe-grid fe-16"></span>
+            </a>
+          </li>
+          <li class="nav-item nav-notif">
+            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+              <span class="fe fe-bell fe-16"></span>
+              <span class="dot dot-md bg-success"></span>
+            </a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="avatar avatar-sm mt-2">
+                <img src="/static/assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="#">Settings</a>
+              <a class="dropdown-item" href="#">Activities</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <aside
+        class="sidebar-left border-right bg-white shadow"
+        id="leftSidebar"
+        data-simplebar
+      >
+        <a
+          href="#"
+          class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3"
+          data-toggle="toggle"
+        >
+          <i class="fe fe-x"><span class="sr-only"></span></i>
+        </a>
+        <nav class="vertnav navbar navbar-light">
+          <img src="/static/assets/images/logo.svg" alt="..." href="rt_home_1.html" style="width:90px;height:90px" ;""> 
+          <!-- nav bar -->                 
+          
+                       
+          <ul class="navbar-nav flex-fill w-100 mb-2"> 
+              <li class="nav-item dropdown"> 
+                  <p class="text-muted nav-heading mt-4 mb-1"> </p> 
+                  <ul class="navbar-nav flex-fill w-100 mb-2"> 
+                      <li class="nav-item w-100"> <a class="nav-link" href="rt_home_1.html"><i class="fe fe-home fe-16"></i><span class="ml-3 item-text">Home</span></a>
+          <a class="nav-link" href="rt_add.html"> <i class="fe fe-plus-square fe-16"></i><span class="ml-3 item-text">Add</span></a> 
+          <a class="nav-link" href="rt_add.html"> <i class="fe fe-users fe-16"></i><span class="ml-3 item-text">User Admin</span></a> 
+          <a class="nav-link" href="rt_u_admin.html"> <i class="fe fe-database fe-16"></i><span class="ml-3 item-text">Knowledge Pool</span></a> <a class="nav-link" href="rt_profile.html"> <i class="fe fe-user fe-16"></i><span class="ml-3 item-text">Profile</span></a> <a class="nav-link" href="help.html"> <i class="fe fe-compass fe-16"></i><span class="ml-3 item-text">Help </span></a>
+                          <a class="nav-link" href="help.html"> <i class="fe fe-settings fe-16"></i><span class="ml-3 item-text">Settings</span></a><a class="nav-link" onclick="logout()"> <i class="fe fe-log-out fe-16"></i><span class="ml-3 item-text">Log out</span></a> 
+                      </li>                             
+                  </ul>                         
+                  <div class="btn-box w-100 mt-4 mb-1"> 
+  </div>                         
+              </li>                     
+          </ul>                 
+      </nav>  
+      </aside>
+      <main role="main" class="main-content">
+        <button  id="userAdd" type="button" class="btn mb-2 btn-success">Add</button>
+        <table id="usermanagerTable" class="display">
+          <thead>
+            <tr id="table-headers">
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </main>
+      <!-- main -->
+    </div>
+    <!-- .wrapper -->
+
+    <!-- start modal -->
+    <div
+      class="modal fade"
+      id="addUserModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addUserModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="addUserModalForm">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="recipient-email" class="col-form-label"
+                      >Email:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="recipient-email"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="recipient-fn" class="col-form-label"
+                      >FirstName:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="recipient-fn"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-role" class="col-form-label"
+                      >Role:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="recipient-role"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="recipient-userID" class="col-form-label"
+                      >UserID:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="recipient-userID"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-ln" class="col-form-label"
+                      >LastName:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="recipient-ln"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-password" class="col-form-label"
+                      >Password:</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="recipient-password"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn mb-2 btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn mb-2 btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="editUserModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editUserModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="editUserModalForm">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="edit-recipient-email" class="col-form-label"
+                      >Email:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="edit-recipient-email"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="edit-recipient-fn" class="col-form-label"
+                      >FirstName:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="edit-recipient-fn"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-recipient-role" class="col-form-label"
+                      >Role:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="edit-recipient-role"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="edit-recipient-userID" class="col-form-label"
+                      >UserID:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="edit-recipient-userID"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-recipient-ln" class="col-form-label"
+                      >LastName:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="edit-recipient-ln"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-recipient-password" class="col-form-label"
+                      >Password:</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="edit-recipient-password"
+                      
+                    />
+                  </div>
+                </div>
+                <div class="col-6 style="margin-right: 10px;">
+                    <label for="edit-recipient-permit" class="col-form-label"
+                    >Login:</label
+                  >
+                    <input
+                      type="checkbox"
+                      class=""
+                      id="edit-recipient-permit"
+                      
+                    />
+                  </div>
+                  <input type="text" id="hide_id" hidden>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn mb-2 btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn mb-2 btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end modal -->
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/moment.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/simplebar.min.js"></script>
+    <script src="/static/js/daterangepicker.js"></script>
+    <script src="/static/js/jquery.stickOnScroll.js"></script>
+    <script src="/static/js/tinycolor-min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/apps.js"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+    <script src="https://www.planetaudio.si/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+    <!-- <script src="/static/js/jquery.dataTables.min.js"></script>
+    <script src="/static/js/dataTables.bootstrap4.min.js"></script> -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"
+    ></script>
+
+    <script>
+      var Data = [];
+      const userRole = ["SuperAdmin", "Admin"];
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-56159088-1");
+
+
+      /**
+       *   Get dom load event
+       * */
+      document.addEventListener("DOMContentLoaded", function () {
+        onContentLoaded();
+      });
+
+      /**
+       *   To sent API to server for users information
+       * */
+      async function onContentLoaded() {
+        let token = sessionStorage.getItem("token");
+        let userId = sessionStorage.getItem("userID");
+        if (!token || !userId) location.href = "/ft/auth/login.html";
+        let res = await fetch("/api/v0/TSP/usermanager/userlist", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(res);
+        if (res.status === 200) {
+          let response = await res.json();
+          Data = [...response];
+          tableDraw(response);
+          console.log(response);
+        } else location.href = "/ft/auth/login.html";
+      }
+
+      const tableDelete = async (id) => {
+        console.log("delete : " + id);
+        let token = sessionStorage.getItem("token")
+        let res = await fetch("/api/v0/TSP/usermanager/delete/"+id, {
+            method: "Delete",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            }
+          });
+          if (res.status === 200) {
+            // alert("Add success");
+            toastr.success(`User Deleted`);
+            location.reload()
+          } else {
+            let response = await res.json();
+            toastr.error(`${response.cause}`);
+            // alert(response.cause)
+          }
+      };
+
+      const tableEdit = (id) => {
+        let selectData = Data.filter((val)=>{
+            if(val._id.$oid === id) return true
+        })
+        console.log(selectData)
+        document.getElementById("edit-recipient-email").value = selectData[0].email
+        document.getElementById("edit-recipient-userID").value = selectData[0].username
+        document.getElementById("edit-recipient-fn").value = selectData[0].first_name
+        document.getElementById("edit-recipient-ln").value = selectData[0].last_name
+        document.getElementById("edit-recipient-role").value = selectData[0].role
+        document.getElementById("edit-recipient-password").value = ""
+        document.getElementById("edit-recipient-permit")["checked"] = selectData[0].allow
+        document.getElementById("hide_id").value = id
+        $("#editUserModal").modal("show");
+      };
+
+
+       /**
+       *  Draw table
+       * */
+      const tableDraw = (response) => {
+        document.getElementById("table-headers").innerHTML = `<th>No</th>
+              <th>Email</th>
+              <th>User Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Permit</th>
+              <th>Role</th>
+              <th>Func</th>`
+        $("#usermanagerTable").DataTable({
+          data: response.map((data, index) => {
+            return {
+              No: index + 1,
+              email: data.email,
+              username: data.username,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              permit: data.allow ? "Yes" : "No",
+              role: data.role,
+              fuc: `<button type="button" onclick="tableEdit('${data._id.$oid}')" class="btn mb-2 btn-primary">Edit</button><button type="button" onclick="tableDelete('${data._id.$oid}')" class="btn mb-2 btn-danger">Delete</button>`,
+            };
+          }),
+          columns: [
+            { data: "No" },
+            { data: "email" },
+            { data: "username" },
+            { data: "first_name" },
+            { data: "last_name" },
+            { data: "permit" },
+            { data: "role" },
+            { data: "fuc" },
+          ],
+        });
+      };
+
+      $("#userAdd").click(() => {
+        $("#addUserModal").modal("show");
+      });
+
+      const openEditModal = () => {
+        try {
+        } catch (error) {}
+      };
+
+      /**
+       *   Get add user event so that send API to server 
+       * */
+
+      document
+        .getElementById("addUserModalForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent default form submission
+          let email = document.getElementById("recipient-email").value;
+          let username = document.getElementById("recipient-userID").value;
+          let first_name = document.getElementById("recipient-fn").value;
+          let last_name = document.getElementById("recipient-ln").value;
+          let password = document.getElementById("recipient-password").value;
+          let role = document.getElementById("recipient-role").value;
+          let token = sessionStorage.getItem("token");
+          let res = await fetch("/api/v0/TSP/usermanager/createuser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              username,
+              first_name,
+              last_name,
+              email,
+              password,
+              role: parseInt(role),
+            }),
+          });
+          if (res.status === 200) {
+            // alert("Add success");
+            toastr.success(`User Added`);
+            $("#addUserModal").modal("hide");
+            location.reload()
+          } else {
+            let response = await res.json();
+            toastr.error(`${response.cause}`);
+            // alert(response.cause)
+          }
+        });
+
+        /**
+         * Get edit user event so that send API to server 
+         * */
+        document
+        .getElementById("editUserModalForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent default form submission
+         let email =  document.getElementById("edit-recipient-email").value 
+        let username = document.getElementById("edit-recipient-userID").value
+        let first_name  = document.getElementById("edit-recipient-fn").value 
+        let last_name =document.getElementById("edit-recipient-ln").value 
+        let role = document.getElementById("edit-recipient-role").value 
+        let password = document.getElementById("edit-recipient-password").value 
+        let id = document.getElementById("hide_id").value
+        let allow  = document.getElementById("edit-recipient-permit")["checked"]
+          let token = sessionStorage.getItem("token");
+          let res = await fetch("/api/v0/TSP/usermanager/user_change/"+id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              username,
+              first_name,
+              last_name,
+              email,
+              password,
+              role: parseInt(role),
+              allow
+            }),
+          });
+          if (res.status === 200) {
+            // alert("Add success");
+            toastr.success(`User Edited`);
+            $("#editUserModal").modal("hide");
+            location.reload()
+          } else {
+            let response = await res.json();
+            toastr.error(`${response.cause}`);
+            // alert(response.cause)
+          }
+        });
+
+        const logout = () => {
+        sessionStorage.setItem("token", "")
+        sessionStorage.setItem("userId","")
+        sessionStorage.setItem("role","")
+        location.href = "/ft/auth/login.html"
+      };
+    </script>
+  </body>
+</html>
